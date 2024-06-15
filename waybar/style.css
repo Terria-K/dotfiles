@@ -1,0 +1,298 @@
+* {
+    border: none;
+    border-radius: 0px;
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: white;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+
+#workspaces button {
+    background: #1f1f1f;
+    color: white;
+    border-radius: 20px;
+
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    background: lightblue;
+    color: white;
+    border-bottom: 3px solid white;
+
+}
+
+#workspaces button.focused {
+    background: #1f1f1f;
+}
+
+#workspaces button.focused:hover {
+    background: lightblue;
+    color: white;
+    border-bottom: 3px solid white;
+
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #64727D;
+    border-bottom: 3px solid white;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#custom-launcher,
+#custom-power,
+#custom-layout,
+#custom-updater,
+#custom-snip,
+#taskbar,
+#tray,
+#mode,
+#idle_inhibitor,
+#mpd {
+    padding: 0 10px;
+    color: white;
+}
+
+#window,
+#workspaces {
+    margin: 0px 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0px;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0px;
+}
+
+#clock {
+    background-color: #33324b;
+    color: white;
+    border-radius: 0px 20px 20px 0px;
+    margin-right: 4px;
+
+}
+
+#battery {
+    background-color: white;
+    color: #000000;
+}
+
+#battery.charging, #battery.plugged {
+    color: black;
+    background-color: #26A65B;
+}
+
+@keyframes blink {
+    to {
+        background-color: white;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: white;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#cpu {
+    background-color: #33324b;
+    color: white;
+}
+
+#memory {
+    background-color: #33324b;
+    color: white;
+}
+
+#disk {
+    background-color: #33324b;
+    color: white;
+}
+
+#backlight {
+    background-color: #90b1b1;
+    color: black;
+}
+
+#network {
+    background-color: #33324b;
+    color: white;
+}
+
+#network.disconnected {
+    background-color: #33324b;
+    color: red;
+}
+
+#pulseaudio {
+    background-color: #33324b;
+    color: white;
+}
+
+#pulseaudio.muted {
+    background-color: #33324b;
+    color: red;
+}
+
+#custom-media {
+    background-color: #33324b;
+    color: white;
+    border-radius: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #33324b;
+    color: white;
+    border-radius: 20px;
+    margin-right: 5px;
+
+}
+
+#custom-media.custom-vlc {
+    background-color: #33324b;
+    color: white;
+    border-radius: 20px;
+    margin-right: 5px;
+}
+
+#custom-power{
+    background-color: #33324b;
+    font-size: 18px;
+    border-radius: 20px;
+    margin-left: 2px;
+}
+
+#custom-launcher{
+    background-color: #33324b;
+    font-size: 25px;
+    border-radius: 20px;
+    margin-right: 2px;
+}
+
+#custom-updater {
+    background-color: #33324b;
+    color: white;
+}
+
+#custom-snip {
+    background-color: #33324b;
+    color: white;
+    font-size: 20px;
+}
+
+#custom-layout{
+    background-color: #33324b;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px 0px 0px 20px;
+}
+
+#taskbar {
+    background-color: #33324b;
+    border-radius: 20px;
+
+}
+
+
+#temperature {
+    background-color: #33324b;
+    color: white;
+    border-radius: 0px 20px 20px 0px;
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+}
+
+#tray {
+    color: white;
+    background-color: #33324b;
+}
+
+#tray > .passive {
+    color: white;
+    -gtk-icon-effect: dim;
+    background-color: #33324b;
+}
+
+#tray > .needs-attention {
+    color: white;
+    -gtk-icon-effect: highlight;
+    background-color: #33324b;
+}
+
+#idle_inhibitor {
+    color: white;
+    background-color: #33324b;
+    border-radius: 20px 0px 0px 20px;
+
+}
+
+#idle_inhibitor.activated {
+    color: white;
+    background-color: #33324b;
+    border-radius: 20px 0px 0px 20px;
+
+}
+
+#language {
+    color: white;
+    background-color: #33324b;
+    min-width: 16px;
+    padding-left : 8px;
+    border-radius: 20px 0px 0px 20px;
+}
+
+#keyboard-state {
+    background: #97e1ad;
+    color: white;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0px 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}

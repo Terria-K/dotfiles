@@ -1,0 +1,43 @@
+* {
+  font-family: Cantarell;
+  color: #e5e9f0;
+  font-weight: bold;
+  background: transparent;
+}
+
+#window {
+  background: #201d36;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px dashed #5bbde4;
+}
+
+#input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+}
+
+#outer-box {
+  padding: 20px;
+}
+
+#img {
+  margin-right: 6px;
+}
+
+#entry {
+  position: relative;
+  padding: 10px;
+  transition: 300ms;
+  border-radius: 15px;
+}
+
+#entry:selected {
+  background-color: #2e3440;
+}
+
+#text {
+  margin: 2px;
+}

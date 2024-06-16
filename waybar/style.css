@@ -2,7 +2,7 @@
     border: none;
     border-radius: 0px;
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
     font-size: 13px;
     min-height: 0;
 }
@@ -20,9 +20,13 @@ window#waybar.hidden {
 
 
 #workspaces button {
-    background: #1f1f1f;
+    transition: 300ms;
+    background: #33324b;
     color: white;
-    border-radius: 20px;
+    border-radius: 10px;
+    padding: 8px;
+    margin-left: 2px;
+    margin-right: 2px;
 
 }
 
@@ -35,7 +39,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.focused {
-    background: #1f1f1f;
+    background: #33333b;
 }
 
 #workspaces button.focused:hover {
@@ -80,7 +84,7 @@ window#waybar.hidden {
 
 #window,
 #workspaces {
-    margin: 0px 4px;
+  margin: 0 2px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -97,7 +101,6 @@ window#waybar.hidden {
     background-color: #33324b;
     color: white;
     border-radius: 0px 20px 20px 0px;
-    margin-right: 4px;
 
 }
 
@@ -175,31 +178,12 @@ label:focus {
 #custom-media {
     background-color: #33324b;
     color: white;
-    border-radius: 20px;
-    margin-right: 5px;
-    margin-left: 5px;
-}
-
-#custom-media.custom-spotify {
-    background-color: #33324b;
-    color: white;
-    border-radius: 20px;
-    margin-right: 5px;
-
-}
-
-#custom-media.custom-vlc {
-    background-color: #33324b;
-    color: white;
-    border-radius: 20px;
-    margin-right: 5px;
 }
 
 #custom-power{
     background-color: #33324b;
     font-size: 18px;
-    border-radius: 20px;
-    margin-left: 2px;
+    border-radius: 0px 20px 20px 0px;
 }
 
 #custom-launcher{
@@ -229,8 +213,7 @@ label:focus {
 
 #taskbar {
     background-color: #33324b;
-    border-radius: 20px;
-
+    border-radius: 20px 0px 0px 20px;
 }
 
 
@@ -238,6 +221,7 @@ label:focus {
     background-color: #33324b;
     color: white;
     border-radius: 0px 20px 20px 0px;
+    margin-right: 4px;
 }
 
 #temperature.critical {

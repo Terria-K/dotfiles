@@ -2,25 +2,30 @@
     "layer": "top",
     "position": "top",
     "height": 35,
-    "spacing": 4,
-    "margin-top": 10,
+    "margin-top": 5,
     "margin-bottom":2,
 
     // Choose the order of the modules
 
-    "modules-left":[  "custom/launcher", "wlr/taskbar"],
-    "modules-center": ["custom/media"],
-    "modules-right":["idle_inhibitor", "pulseaudio", "cpu", "memory", "temperature", "custom/layout", "backlight", "keyboard-state",  "battery", "battery#bat2", "network", "tray", "clock", "custom/power"],
+    "modules-left":["custom/launcher", "hyprland/workspaces"],
+    "modules-center": ["wlr/taskbar", "custom/media", "clock"],
+    "modules-right":["idle_inhibitor", "pulseaudio", "cpu", "memory", "temperature", "custom/layout", "backlight", "keyboard-state",  "battery", "battery#bat2", "network", "tray", "custom/power"],
     // Modules configuration
+
+    "hyprland/workspaces": {
+         "format": "{icon}",
+         "on-scroll-up": "hyprctl dispatch workspace e+1",
+         "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
 
     "wlr/taskbar": {
         "format": "{icon}",
         "icon-size": 20,
         "icon-theme": "Star",
         "tooltip-format": "{title}",
-        "on-click": "minimize",
+        "on-click": "activate",
         "on-click-middle": "close",
-        "on-click-right": "activate"
+        "on-click-right": "minimize"
     },
     "keyboard-state": {
         "numlock": true,
@@ -56,7 +61,7 @@
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% \uefc5"
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -126,12 +131,12 @@
         "on-click": "playerctl play-pause"
     },
     "custom/launcher":{
-        "format": "",
+        "format": "󰍜",
         "on-click": "wofi --show drun",
         "on-click-right": "killall rofi"
     },
     "custom/power":{
-        "format": "  ",
+        "format": " ",
         "on-click": "wlogout --protocol layer-shell",
     },
     "custom/layout":{

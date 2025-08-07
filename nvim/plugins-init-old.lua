@@ -1,16 +1,3 @@
--- Configurations --
--- Specify the user to know what user configurations to choose from
--- Choose the theme you like, or use other ones aswell
-User = "terria"
-
-
--- Internals
-Rivim = {}
-local user_cfg = require("user." .. User)
-local plugins_init = user_cfg["plugins_init"]
-local keymap = user_cfg.keymap
-Rivim.syntax = user_cfg.syntax
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -33,6 +20,40 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = {
+    -- import your plugins
+    { import = "plugins" },
+  },
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  install = { colorscheme = { "habamax" } },
+  -- automatically check for plugin updates
+  checker = { enabled = true },
+})
+
+require("impatient")
+Rivim = {}
+local user_cfg = require("user." .. User)
+local plugins_init = user_cfg["plugins_init"]
+local keymap = user_cfg.keymap
+Rivim.syntax = user_cfg.syntax
+
+require("user.keymap." .. keymap)
+
+require("lsp-config.handler")
+require("lsp-config.language-servers")
+
+-- Override default setup --
+for key, init in pairs(plugins_init) do
+  if type(init) == "function" then
+    require(key).setup(init())
+  else
+    require(key).setup(init)
+  end
+end
+
 if user_cfg["number"] == "relative" then
   vim.wo.relativenumber = true
   vim.wo.number = true
@@ -49,9 +70,6 @@ for key, opt in pairs(user_cfg["options"]) do
   vim.o[key] = opt
 end
 
--- Setup lazy.nvim
-require("lazy").setup("plugins")
-
 -- Override the theme --
 if user_cfg.theme ~= nil then
   local ok, theme = pcall(require, user_cfg.theme)
@@ -59,4 +77,3 @@ if user_cfg.theme ~= nil then
     theme.load()
   end
 end
-

@@ -17,7 +17,6 @@ return {
 
     local function on_attach(client, bufnr)
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
         vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)

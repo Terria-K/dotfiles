@@ -50,7 +50,14 @@ for key, opt in pairs(user_cfg["options"]) do
 end
 
 -- Setup lazy.nvim
-require("lazy").setup("plugins")
+require("lazy").setup({
+  { import = "plugins" }
+},
+{
+  change_detection = {
+    notify = false
+  }
+})
 
 -- Override the theme --
 if user_cfg.theme ~= nil then

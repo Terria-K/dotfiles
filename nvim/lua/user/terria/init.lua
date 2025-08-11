@@ -4,7 +4,7 @@
 local config = {
   keymap = "default",
   number = "absolute",
-  theme = "onedark",
+  theme = "vscode",
 
   options = {
     expandtab = true,

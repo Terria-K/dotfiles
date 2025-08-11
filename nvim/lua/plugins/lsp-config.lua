@@ -5,31 +5,17 @@ return {
     "hrsh7th/nvim-cmp"
   },
   config = function()
-    Rivim.lsp = {}
     local navic = require("nvim-navic")
     local user = require("user." .. User)
     local lspconfig = require("lspconfig")
 
-    Rivim.lsp.config = user.lsp.config
-    Rivim.lsp.servers = user.lsp.servers
-
     local capabilities = require("cmp_nvim_lsp").default_capabilities();
-    Rivim.lsp.capabilities = capabilities
 
-    Rivim.lsp.lsp_flags = {
+    local lsp_flags = {
         debounce_text_changes = 150,
     }
 
-    Rivim.lsp.setup = function(server)
-      local opts = Rivim.lsp.server_settings(server)
-      lspconfig[server].setup(opts)
-
-      if server == "csharp_ls" then
-        require("csharpls_extended").buf_read_cmd_bind()
-      end
-    end
-
-    Rivim.lsp.on_attach = function(client, bufnr)
+    local function on_attach(client, bufnr)
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -51,18 +37,28 @@ return {
         end
     end
 
-    Rivim.lsp.server_settings = function(server)
+    local function server_settings(server)
         local ok, server_opts = pcall(require, "lsp-config.servers." .. server)
         local server_opt = ok and server_opts or {}
-        if Rivim.lsp.config[server] then
-            server_opt = Rivim.lsp.config[server]
+        if user.lsp.config[server] then
+            server_opt = user.lsp.config[server]
         end
 
-        server_opt.on_attach = Rivim.lsp.on_attach
-        server_opt.capabilities = Rivim.lsp.capabilities
-        server_opt.flags = Rivim.lsp.lsp_flags
+        server_opt.on_attach = on_attach
+        server_opt.capabilities = capabilities
+        server_opt.flags = lsp_flags
         return server_opt
     end
+
+    local function setup(server)
+        local opts = server_settings(server)
+        lspconfig[server].setup(opts)
+
+        if server == "csharp_ls" then
+          require("csharpls_extended").buf_read_cmd_bind()
+        end
+    end
+
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
@@ -104,8 +100,8 @@ return {
 
     vim.diagnostic.config(config)
 
-    for server = 1, #Rivim.lsp.servers do
-      Rivim.lsp.setup(Rivim.lsp.servers[server])
+    for server = 1, #user.lsp.servers do
+      setup(user.lsp.servers[server])
     end
   end
 }

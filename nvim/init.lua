@@ -5,11 +5,7 @@ User = "terria"
 
 
 -- Internals
-Rivim = {}
 local user_cfg = require("user." .. User)
-local plugins_init = user_cfg["plugins_init"]
-local keymap = user_cfg.keymap
-Rivim.syntax = user_cfg.syntax
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then

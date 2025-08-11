@@ -2,8 +2,10 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     config = function()
+      local user = require("user." .. User)
+
       require("nvim-treesitter.configs").setup({
-        ensure_installed = Rivim.syntax,
+        ensure_installed = user.syntax,
         highlight = {
           enable = true,
         },

@@ -3,7 +3,6 @@
 -- Choose the theme you like, or use other ones aswell
 User = "terria"
 
-
 -- Internals
 local user_cfg = require("user." .. User)
 
@@ -22,7 +21,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
-
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
@@ -54,6 +52,9 @@ require("lazy").setup({
     notify = false
   }
 })
+
+-- load keymaps
+require("keymaps")
 
 -- Override the theme --
 if user_cfg.theme ~= nil then

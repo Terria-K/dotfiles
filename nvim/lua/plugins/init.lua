@@ -1,6 +1,12 @@
 local plugins = {
   {"Decodetalkers/csharpls-extended-lsp.nvim"},
-  {"j-hui/fidget.nvim"},
+  {"roxma/vim-tmux-clipboard"},
+  {
+    "j-hui/fidget.nvim",
+    config = function ()
+      require("fidget").setup()
+    end
+  },
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",

@@ -2,9 +2,12 @@ local plugins = {
   {"Decodetalkers/csharpls-extended-lsp.nvim"},
   {"roxma/vim-tmux-clipboard"},
   {
-    "j-hui/fidget.nvim",
+    "rcarriga/nvim-notify",
+    dependencies = {
+      "nvim-telescope/telescope.nvim"
+    },
     config = function ()
-      require("fidget").setup()
+      vim.notify = require("notify")
     end
   },
   {
@@ -27,12 +30,10 @@ local plugins = {
   {"onsails/lspkind.nvim"},
 
   {"kyazdani42/nvim-web-devicons", lazy = true},
-  {"andweeb/presence.nvim"},
 
   {"windwp/nvim-ts-autotag"},
   {"lukas-reineke/indent-blankline.nvim"},
 
   {"svermeulen/vimpeccable"},
 }
-
 return plugins

@@ -43,7 +43,6 @@ return {
             server_opt = user.lsp.config[server]
         end
 
-        server_opt.on_attach = on_attach
         server_opt.capabilities = capabilities
         server_opt.flags = lsp_flags
         return server_opt
@@ -51,6 +50,7 @@ return {
 
     local function setup(server)
         local opts = server_settings(server)
+        opts.on_attach = on_attach
         lspconfig[server].setup(opts)
 
         if server == "csharp_ls" then

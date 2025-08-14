@@ -11,6 +11,7 @@ return {
       require("dap.ext.vscode").load_launchjs()
     end
   },
+
   {
     "NicholasMata/nvim-dap-cs",
     dependencies = {
@@ -20,6 +21,7 @@ return {
       require("dap-cs").setup()
     end
   },
+
   {
     "rcarriga/nvim-dap-ui",
     dependencies = {

@@ -5,6 +5,7 @@ return {
     'nvim-lua/plenary.nvim',
     "j-hui/fidget.nvim"
   },
+
   config = function ()
     require("telescope").setup({
       pickers = {
@@ -12,11 +13,29 @@ return {
           sort_lastused = true,
           ignore_current_buffer = true
         }
+      },
+      defaults = {
+        mappings = {
+          i = {
+            ["<ESC>"] = require('telescope.actions').close
+          }
+        }
       }
     })
+
     local builtin = require('telescope.builtin')
-    vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find Files' })
-    vim.keymap.set('n', 'fb', builtin.buffers, { desc = 'Buffers' })
+    vim.keymap.set('n', '<C-p>', function ()
+      builtin.find_files({
+        previewer = false,
+        shorten_path = true
+      })
+    end, { desc = 'Find Files' })
+    vim.keymap.set('n', 'fb', function ()
+      builtin.buffers({
+        previewer = false,
+        shorten_path = true
+      })
+    end, { desc = 'Buffers' })
     vim.keymap.set('n', '<C-\\>', builtin.live_grep, { desc = 'Live Grep' })
   end
 }

@@ -1,13 +1,11 @@
 local plugins = {
   {"Decodetalkers/csharpls-extended-lsp.nvim"},
   {"roxma/vim-tmux-clipboard"},
+
   {
-    "rcarriga/nvim-notify",
-    dependencies = {
-      "nvim-telescope/telescope.nvim"
-    },
+    "vigoux/notifier.nvim",
     config = function ()
-      vim.notify = require("notify")
+      require("notifier").setup()
     end
   },
   {
@@ -15,17 +13,6 @@ local plugins = {
     event = "InsertEnter",
     config = true
   },
-
-  {
-    "terrortylor/nvim-comment",
-    config = function()
-      require("nvim_comment").setup({
-        line_mapping = "<C-/>",
-        operator_mapping = ",",
-      })
-    end
-  },
-
 
   {"onsails/lspkind.nvim"},
 

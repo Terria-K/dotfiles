@@ -30,6 +30,12 @@ local config = {
     },
   },
 
+  dap = {
+    adapters = {
+      "netcoredbg"
+    }
+  },
+
   -- This will install a syntax tree from tree sitter plugin
   syntax = {
     "lua",

@@ -22,7 +22,9 @@ local config = {
       -- "html",
       -- "denols",
       -- "pyright",
-      "csharp_ls",
+      "roslyn"
+      --"csharp_ls",
+      --"rust_analyzer"
       --"omnisharp",
     },
     config = {

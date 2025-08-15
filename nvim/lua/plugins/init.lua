@@ -1,13 +1,6 @@
 local plugins = {
   {"Decodetalkers/csharpls-extended-lsp.nvim"},
   {"roxma/vim-tmux-clipboard"},
-
-  {
-    "vigoux/notifier.nvim",
-    config = function ()
-      require("notifier").setup()
-    end
-  },
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
@@ -22,5 +15,10 @@ local plugins = {
   {"lukas-reineke/indent-blankline.nvim"},
 
   {"svermeulen/vimpeccable"},
+
+  {
+    "seblyng/roslyn.nvim",
+    opts = {}
+  }
 }
 return plugins

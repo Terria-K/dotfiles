@@ -1,5 +1,15 @@
 local util = require("lspconfig.util")
 
+vim.lsp.config("csharp_ls", {
+  init_options = {
+    AutomaticWorkspaceInit = true,
+    RoslynExtensionsOptions = {
+      EnableAnalyzersSupport = true,
+      EnableImportCompletion = true
+    }
+  }
+})
+
 local function root_within_cwd(root)
   local cwd = vim.fn.getcwd()
   return root and cwd and root:sub(1, #cwd) == cwd
@@ -17,8 +27,12 @@ local M = {
   end,
   filetypes = { 'cs' },
   init_options = {
-    AutomaticWorkspaceInit = true,
-  },
+    AutomaticWorkspaceInit = false,
+    RoslynExtensionsOptions = {
+      EnableAnalyzersSupport = true,
+      EnableImportCompletion = true
+    }
+  }
 }
 
 

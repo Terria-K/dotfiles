@@ -56,6 +56,10 @@ return {
         if server == "csharp_ls" then
           require("csharpls_extended").buf_read_cmd_bind()
         end
+
+        if server == "roslyn" then
+          vim.lsp.config("roslyn", opts)
+        end
     end
 
 

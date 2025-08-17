@@ -18,9 +18,7 @@ local plugins = {
 
   {
     "seblyng/roslyn.nvim",
-    opts = {
-      filewatching = "off"
-    }
+    opts = {}
   }
 }
 return plugins

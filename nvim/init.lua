@@ -27,6 +27,8 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.opt.colorcolumn = user_cfg.colorcolumn
+
 if user_cfg["number"] == "relative" then
   vim.wo.relativenumber = true
   vim.wo.number = true

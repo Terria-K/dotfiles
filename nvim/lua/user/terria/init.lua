@@ -5,6 +5,7 @@ local config = {
   keymap = "default",
   number = "absolute",
   theme = "vscode",
+  colorcolumn = "100",
 
   options = {
     expandtab = true,

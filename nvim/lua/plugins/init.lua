@@ -17,6 +17,13 @@ local plugins = {
   {"svermeulen/vimpeccable"},
 
   {
+    "m4xshen/smartcolumn.nvim",
+    opts = {
+      colorcolumn = "100"
+    }
+  },
+
+  {
     "seblyng/roslyn.nvim",
     opts = {}
   }
